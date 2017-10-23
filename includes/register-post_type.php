@@ -52,6 +52,11 @@ function add_form_metaboxes() {
 
         add_filter( "postbox_classes_" .PLUGINNAME::SLUG. "_" . $input_type, 'push_closed_in_array' );
     }
+
+    add_meta_box( 'cform_message_settings', __('Message Settings'), 'cform_message_template_cb', PLUGINNAME::SLUG, 'normal' );
+    add_meta_box( 'cform_message_template', __('Message Template'), 'cform_message_template_cb', PLUGINNAME::SLUG, 'normal' );
+}
+function cform_message_template_cb() {
 }
 
 add_action( 'admin_enqueue_scripts', 'set_to_enqueue_form_type_scripts' );

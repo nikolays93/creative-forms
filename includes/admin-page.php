@@ -7,7 +7,7 @@ class PLUGINNAME_Page
         $page = new WP_Admin_Page( PLUGINNAME::SETTINGS );
         $page->set_args( array(
             'parent'      => false,
-            'title'       => '',
+            'title'       => __( 'Creative Forms' ),
             'menu'        => 'Creative Forms',
             'callback'    => array($this, 'page_render'),
             // 'validate'    => array($this, 'validate_options'),

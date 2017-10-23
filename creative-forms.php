@@ -51,6 +51,7 @@ class PLUGINNAME {
 
         // includes
         require_once PLUGINNAME_DIR . '/includes/register-post_type.php';
+        require_once PLUGINNAME_DIR . '/includes/shortcode.php';
         require_once PLUGINNAME_DIR . '/includes/admin-page.php';
     }
 
@@ -86,13 +87,13 @@ function forms_mce_actions_and_filters() {
 
 /** Register Button MCE */
 function mce_button_script($plugin_array){
-    $plugin_array['forms'] = PLUGINNAME_URL . '/scripts/mce_button.js';
+    $plugin_array['cforms_mce'] = PLUGINNAME_URL . '/scripts/mce_button.js';
 
     return $plugin_array;
 }
 
 function mce_register_button($buttons){
-    $buttons[] = 'forms';
+    $buttons[] = 'cforms_mce';
 
     return $buttons;
 }

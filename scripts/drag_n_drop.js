@@ -1,3 +1,9 @@
+/**
+ * Not work'd for no rich editor on Windows
+ * No abruptly drop
+ *
+ * @todo: fixit!
+ */
 jQuery(document).ready(function($) {
     $('#wp-content-editor-container').droppable({
         over: function(event, ui) {
@@ -26,10 +32,11 @@ jQuery(document).ready(function($) {
                 case "submit":
                     field = '<input type="submit" value="submit" />';
                 break;
-          }
-          tinyMCE.activeEditor.execCommand('mceInsertContent', false, field);
-          $(this).removeClass('overed');
-          return false;
+            }
+            tinyMCE.activeEditor.execCommand('mceInsertContent', false, field);
+            $(this).removeClass('overed');
+
+            return false;
         }
     });
 });
