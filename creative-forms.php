@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Новый плагин
-Plugin URI:
-Description:
+Plugin Name: Creative Forms
+Plugin URI: https://github.com/nikolays93/creative-forms
+Description: New plugin for easily (drag'n'drop) create forms.
 Version: 0.1
 Author: NikolayS93
 Author URI: https://vk.com/nikolays_93
