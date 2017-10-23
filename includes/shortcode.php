@@ -22,9 +22,9 @@ function shortcode_form_callback( $atts = array(), $content = '' ) {
 
     wp_enqueue_script( 'submit-cform', PLUGINNAME_URL . '/scripts/front-submit.js', array( 'jquery' ), PLUGINNAME::VERSION, true );
 
-    wp_localize_script( $handle, 'cform', array(
-        'cform_'
-        ) );
+    // wp_localize_script( $handle, 'cform', array(
+    //     'cform_'
+    //     ) );
 
     return $form;
 }

@@ -74,6 +74,7 @@ add_action('edit_form_after_title', 'form_reorder_boxes');
 function form_reorder_boxes(){
     ?>
     <style>
+        #edit-slug-box,
         #visibility.misc-pub-section {
             display: none;
         }

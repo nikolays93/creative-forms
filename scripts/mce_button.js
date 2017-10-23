@@ -71,7 +71,7 @@
                 case "email":
                 case "number":
                     editor.windowManager.open( {
-                        title: 'Settings',
+                        title: 'Edit text field',
                         body: fields,
                         onsubmit: function( values ) {
                             input.name = values.data.name;

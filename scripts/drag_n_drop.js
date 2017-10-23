@@ -33,6 +33,14 @@ jQuery(document).ready(function($) {
                     field = '<input type="submit" value="submit" />';
                 break;
             }
+
+            // field = tinyMCE.activeEditor.dom.create( 'input', {
+            //     id: '',
+            //     type: type
+            //     // href:  '../wp-content/plugins/tiny-mce-bootstrap-grid/assets/mce-grid.min.css'
+            // }
+            // );
+
             tinyMCE.activeEditor.execCommand('mceInsertContent', false, field);
             $(this).removeClass('overed');
 
