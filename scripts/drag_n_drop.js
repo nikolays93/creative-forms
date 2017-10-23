@@ -7,6 +7,7 @@
 jQuery(document).ready(function($) {
     $('#wp-content-editor-container').droppable({
         over: function(event, ui) {
+            $('#postdivrich .wp-editor-tabs #content-tmce').trigger('click');
             $(this).addClass('overed');
         },
         out: function(event, ui) {

@@ -53,10 +53,109 @@ function add_form_metaboxes() {
         add_filter( "postbox_classes_" .PLUGINNAME::SLUG. "_" . $input_type, 'push_closed_in_array' );
     }
 
-    add_meta_box( 'cform_message_settings', __('Message Settings'), 'cform_message_template_cb', PLUGINNAME::SLUG, 'normal' );
     add_meta_box( 'cform_message_template', __('Message Template'), 'cform_message_template_cb', PLUGINNAME::SLUG, 'normal' );
+    add_meta_box( 'cform_message_settings', __('Message Settings'), 'cform_message_settings_cb', PLUGINNAME::SLUG, 'normal' );
+    add_meta_box( 'cform_advanced_settings', __('Advanced Settings'), 'cform_advanced_settings_cb', PLUGINNAME::SLUG, 'normal' );
+}
+
+function cform_message_settings_cb() {
+    $data = array(
+        array(
+            'id'    => 'example_0',
+            'type'  => 'text',
+            'label' => __( 'To' ), //'Кому',
+            'desc'  => __( 'From whom the message will be sent.' ),
+            ),
+        array(
+            'id'    => 'example_1',
+            'type'  => 'text',
+            'label' => __( 'From' ), //'От кого',
+            'desc'  => __( 'To whom the message will be sent.' ),
+            ),
+        array(
+            'id'    => 'example_2',
+            'type'  => 'text',
+            'label' => __( 'Theme message' ), // 'Тема сообщения',
+            'desc'  => __( 'The message will be sent.' ),
+            ),
+        array(
+            'id'    => 'example_3',
+            'type'  => 'textarea',
+            'label' => __( 'Advanced headers' ),
+            'desc'  => __( 'Don\'t change if you doubt' ),
+            ),
+        array(
+            'id'    => 'separate',
+            'type'  => 'html',
+            'value' => '<hr><h4>' . __('Limits:') . '</h4>',
+            ),
+        array(
+            'id'    => 'example_4',
+            'type'  => 'number',
+            'label' => __( 'Per user' ),
+            'desc'  => __( '' ),
+            ),
+        array(
+            'id'    => 'example_5',
+            'type'  => 'number',
+            'label' => __( 'Per time' ),
+            'desc'  => __( '' ),
+            ),
+        );
+
+    $form = new WP_Admin_Forms( $data, $is_table = true, $args = array(
+            // Defaults:
+            // 'admin_page'  => true,
+            // 'item_wrap'   => array('<p>', '</p>'),
+            // 'form_wrap'   => array('', ''),
+            // 'label_tag'   => 'th',
+            // 'hide_desc'   => false,
+        ) );
+    echo $form->render();
+
+    // submit_button( 'Сохранить', 'primary right', 'save_changes' );
+    // echo '<div class="clear"></div>';
 }
 function cform_message_template_cb() {
+    echo sprintf( '<p><a href="#" class="button" data-tag="[all_data]">%s</a></p>',
+        __('Insert all data tag') );
+
+    echo sprintf('<textarea name="" id="message_tpl" class="widefat" rows="10">
+--
+%s</textarea>',
+        __('New message from ' . site_url() ) );
+}
+function cform_advanced_settings_cb() {
+    $data = array(
+        array(
+            'id'    => 'example_1',
+            'type'  => 'textarea',
+            'label' => __( 'After sent Script' ),
+            'desc'  => __( 'JavaScript code initialized after successful sent' ),
+            ),
+        array(
+            'id'    => 'example_1',
+            'type'  => 'textarea',
+            'label' => __( 'After fail sent Script' ),
+            'desc'  => __( 'JavaScript code initialized after canceled sent' ),
+            ),
+        array(
+            'id'    => 'example_0',
+            'type'  => 'checkbox',
+            'label' => __( 'Save results' ),
+            'desc'  => '(<a href="#">' . __( 'See results' ) . '</a> | <a href="#">' . __( 'Download' ) . '</a>)',
+            ),
+        );
+
+    $form = new WP_Admin_Forms( $data, $is_table = true, $args = array(
+            // Defaults:
+            // 'admin_page'  => true,
+            // 'item_wrap'   => array('<p>', '</p>'),
+            // 'form_wrap'   => array('', ''),
+            // 'label_tag'   => 'th',
+            // 'hide_desc'   => false,
+        ) );
+    echo $form->render();
 }
 
 add_action( 'admin_enqueue_scripts', 'set_to_enqueue_form_type_scripts' );
